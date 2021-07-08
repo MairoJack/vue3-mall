@@ -8,7 +8,9 @@ const store = createStore({
         showCart: false
     },
     mutations: {
-
+        SHOWCART(state, { showCart }) {
+            state.showCart = showCart;
+        },
     },
     actions: {
 

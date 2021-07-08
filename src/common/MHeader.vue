@@ -223,20 +223,20 @@ export default {
     //     } else {
     //       this.INITBUYCART();
     //     }
-    //   },
-    //   methods: {
-    //     ...mapMutations(["SHOWCART", "INITBUYCART"]),
-    //     cartShowState(state) {
-    //       this.SHOWCART({
-    //         showCart: state,
-    //       });
-    //     },
+  },
+  methods: {
+    ...mapMutations(["SHOWCART", "INITBUYCART"]),
+    cartShowState(state) {
+      this.SHOWCART({
+        showCart: state,
+      });
+    },
     //     logout() {
     //       removeStore("token");
     //       removeStore("buyCart");
     //       window.location.href = "/";
-    //     },
   },
+
   //   created() {},
 };
 </script>
