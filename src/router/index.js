@@ -6,6 +6,7 @@ import Home from '@/views/Home/Index.vue'
 import Goods from '@/views/Goods/Index.vue'
 import GoodsDetail from '@/views/GoodsDetail/Index.vue'
 import Thanks from '@/views/Thanks/Index.vue'
+import User from '@/views/User/Index.vue'
 const routes = [
     {
         path: "/",
@@ -36,6 +37,14 @@ const routes = [
         path: "/login",
         name: "login",
         component: Login
+    },
+    {
+        path: "/user",
+        name: "user",
+        component: User,
+        meta: {
+            auth: true
+        }
     }
 ]
 
@@ -44,4 +53,16 @@ const router = createRouter({
     routes
 })
 
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.auth)) {
+        next({
+            path: "/login",
+            query: {
+                redirect: to.fullPath
+            }
+        })
+    } else {
+        next()
+    }
+})
 export default router
